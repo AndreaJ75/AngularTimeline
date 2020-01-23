@@ -1,0 +1,44 @@
+
+<!-- Formulaire de saisie Date -->
+<form [formGroup]="cardDateForm" (ngSubmit) = "onGuess(cardDateForm.value)">
+    <div id="cardDateInput">
+        <input id="cardDate" type="text"
+         placeholder='Entrez la date' formControlName="dateToGuess">
+        <button class= "button" type="submit"> Deviner </button>
+    </div>
+</form>
+
+<!-- Carte à deviner -->
+<div>
+    <h2> Carte à deviner </h2>    
+</div>
+
+<div class = "guessCardBlock" *ngIf = "cardToplay">  
+
+    <h2> {{ cardToplay.name }} </h2>
+    
+    <img class="guessCardPicture" src = {{cardToplay.imageUrl}} alt = "carte a deviner">
+    
+    <h3> {{ cardToplay.description }} </h3>
+</div>
+
+<br>
+<!-- Bloc de cartes devinées -->
+<div>
+    <h2> Carte(s) trouvées </h2>    
+</div>
+
+<div class = "guessedCardDiv">
+    <div class = "guessedCardBlock" *ngFor = "let guessedCard of guessedCardList , let i =index">
+
+        <h2> {{ guessedCard.name }} </h2>
+    
+        <h2> {{ guessedCard.date }} </h2>
+    
+        <img class = "guessedCardPicture" src =  {{guessedCard.imageUrl}} alt = "carte devinee">
+    
+        <h3> {{guessedCard.description}} </h3> 
+    
+    </div>
+</div>
+
